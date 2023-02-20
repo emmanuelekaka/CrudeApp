@@ -3,6 +3,11 @@
 const express = require ('express');
 const app = express();
 
+// Setting a template engine to ejs
+app.set('view engine', 'ejs');
+// Below code is automatic unless if you want a custome name like myviews then u set the second parameter
+// app.set('views', 'views');
+
 // initializing express
 // app.get('/',(req,res)=>{
 //     res.send('<h1>Hello World</h1>');
