@@ -11,12 +11,16 @@ const app = express();
 //     res.send('<h1>About us</h1>');
 // })
 
-// Dealing with html files
+// Dealing with html files and basic routing
 app.get('/',(req,res)=>{
     res.sendFile('./views/index.html',{root:__dirname});
 })
 app.get('/about',(req,res)=>{
     res.sendFile('./views/about.html',{root:__dirname});
+})
+// redirects in express
+app.get('/about-me',(req,res)=>{
+    res.redirect('/about');
 })
 
 
