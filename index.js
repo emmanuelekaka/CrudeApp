@@ -22,7 +22,10 @@ app.get('/about',(req,res)=>{
 app.get('/about-me',(req,res)=>{
     res.redirect('/about');
 })
-
+// default to 404
+app.use((req, res)=>{
+    res.sendFile('./views/404.html',{root:__dirname});
+})
 
 // Listens to requests from the client (browser)
 app.listen(3000);
