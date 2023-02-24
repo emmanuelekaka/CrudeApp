@@ -18,19 +18,25 @@ app.set('view engine', 'ejs');
 
 // Dealing with html files and basic routing
 app.get('/',(req,res)=>{
-    res.render('index');
+    const blogs = [
+        {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
+        {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
+        {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
+        {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
+    ]
+    res.render('index',{title:'Home Page', blogs});
 })
 app.get('/about',(req,res)=>{
-    res.render('about');
+    res.render('about',{title:'About Page'});
 })
 app.get('/login',(req,res)=>{
-    res.render('login');
+    res.render('login',{title:'Login Page'});
 })
 app.get('/register',(req,res)=>{
-    res.render('register');
+    res.render('register',{title:'Register Page'});
 })
 app.get('/create',(req,res)=>{
-    res.render('create');
+    res.render('create',{title:'Create Blog Page'});
 })
 // redirects in express
 // app.get('/about-me',(req,res)=>{
@@ -38,7 +44,7 @@ app.get('/create',(req,res)=>{
 // })
 // default to 404
 app.use((req, res)=>{
-    res.status(404).render('404');
+    res.status(404).render('404',{title:'404 Page'});
 })
 
 // Listens to requests from the client (browser)
