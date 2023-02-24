@@ -1,36 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-</head>
-<body>
-    <div class="header">
-        <div class="logo">
-            <a href="/">Home</a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="/about">About</a></li>
-                <li><a href="/create">Create Blog</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-            </ul>
-            
-        </nav>
+ <!-- Include file(s) -->
+<%- include('./frame/header')%>
+<%- include('./frame/nav')%> 
+<div>
+    <form action="">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" >
+        <label for="pswd">Password</label>
+        <input type="pswd" name="pswd" id="pswd" >
+        <button name="signin" id="signin" type="submit">Submit</button>
+    </form>
 
-    </div>
-    
-    <div>
-        <form action="">
-            <input type="email" name="email" id="email" >
-            <input type="pswd" name="pswd" id="pswd" >
-            <button name="signin" id="signin" type="submit">Submit</button>
-        </form>
-
-    </div>
-    
-</body>
-</html>
+</div>
+<!-- Include file(s) -->
+<%- include('./frame/footer')%>

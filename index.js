@@ -15,6 +15,11 @@ app.set('view engine', 'ejs');
 // app.get('/about',(req,res)=>{
 //     res.send('<h1>About us</h1>');
 // })
+app.use((req,res)=>{
+    console.log(req.hostname);
+    console.log(req.path);
+    console.log(req.method);
+});
 
 // Dealing with html files and basic routing
 app.get('/',(req,res)=>{
