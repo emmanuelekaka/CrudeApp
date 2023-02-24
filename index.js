@@ -18,18 +18,27 @@ app.set('view engine', 'ejs');
 
 // Dealing with html files and basic routing
 app.get('/',(req,res)=>{
-    res.sendFile('./views/index.html',{root:__dirname});
+    res.render('index');
 })
 app.get('/about',(req,res)=>{
-    res.sendFile('./views/about.html',{root:__dirname});
+    res.render('about');
+})
+app.get('/login',(req,res)=>{
+    res.render('login');
+})
+app.get('/register',(req,res)=>{
+    res.render('register');
+})
+app.get('/create',(req,res)=>{
+    res.render('create');
 })
 // redirects in express
-app.get('/about-me',(req,res)=>{
-    res.redirect('/about');
-})
+// app.get('/about-me',(req,res)=>{
+//     res.redirect('/about');
+// })
 // default to 404
 app.use((req, res)=>{
-    res.sendFile('./views/404.html',{root:__dirname});
+    res.status(404).render('404');
 })
 
 // Listens to requests from the client (browser)

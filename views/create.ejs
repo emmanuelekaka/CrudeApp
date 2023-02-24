@@ -7,12 +7,31 @@
     <title>Create Blog</title>
 </head>
 <body>
+    <div class="header">
+        <div class="logo">
+            <a href="../">Home</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+                <li><a href="/create">Create Blog</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            </ul>
+            
+        </nav>
+
+    </div>
+    
     <h1>Create Blog Post</h1>
     <!-- Form where the blog is created from -->
     <div>
         <form action="">
+            <label for="heading">Heading</label>
             <input type="text" name="headng" id="heading" rows="2">
+            <label for="message">Message</label>
             <input type="text" name="message" id="message" rows="4">
+            <button>Submit</button>
         </form>
 
     </div>
