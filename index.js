@@ -15,10 +15,11 @@ app.set('view engine', 'ejs');
 // app.get('/about',(req,res)=>{
 //     res.send('<h1>About us</h1>');
 // })
-app.use((req,res)=>{
+app.use((req,res, next)=>{
     console.log(req.hostname);
     console.log(req.path);
     console.log(req.method);
+    next();
 });
 
 // Dealing with html files and basic routing
