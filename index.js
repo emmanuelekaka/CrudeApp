@@ -2,6 +2,15 @@
 
 const express = require ('express');
 const app = express();
+const mongoose = require ('mongoose')
+
+// conection to mongodb
+const uri = 'mongodb://localhost:27017/crude';
+if(mongoose.connect(uri,{useNewUrlParser:true, useUnifiedTopology:true})){
+    console.log("db connection success");
+
+};
+
 
 // Setting a template engine to ejs
 app.set('view engine', 'ejs');
@@ -15,12 +24,15 @@ app.set('view engine', 'ejs');
 // app.get('/about',(req,res)=>{
 //     res.send('<h1>About us</h1>');
 // })
-app.use((req,res, next)=>{
-    console.log(req.hostname);
-    console.log(req.path);
-    console.log(req.method);
-    next();
-});
+// app.use((req,res, next)=>{
+//     console.log(req.hostname);
+//     console.log(req.path);
+//     console.log(req.method);
+//     next();
+// });
+
+// Middle ware and static files.
+app.use(express.static('public'));
 
 // Dealing with html files and basic routing
 app.get('/',(req,res)=>{

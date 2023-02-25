@@ -1,44 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-</head>
-<body>
-    <div class="header">
-        <div class="logo">
-            <a href="/">Home</a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="/about">About</a></li>
-                <li><a href="/create">Create Blog</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-            </ul>
-            
-        </nav>
+<%- include('./frame/header')%>
+<%- include('./frame/nav')%> 
 
-    </div>
-    
-    <div>
-        <form action="">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" >
-            <label for="pswd">User Type</label>
-            <select name="role" id="role" >
-                <option value="0">User</option>
-                <option value="1">Content Creator</option>
-            </select>
-            <label for="pswd1">Password</label>
-            <input type="pswd1" name="pswd1" id="pswd1" >
-            <label for="pswd2">Confirm Password</label>
-            <input type="pswd2" name="pswd2" id="pswd2" >
-            <button name="signup" id="signup" type="submit">Submit</button>
-        </form>
+<div>
+    <form action="">
+        <label for="email">Email</label><br>
+        <input type="email" name="email" id="email" ><br><br>
+        <label for="pswd">User Type</label><br>
+        <select name="role" id="role" >
+            <option value="0">User</option>
+            <option value="1">Content Creator</option>
+        </select><br><br>
+        <label for="pswd1">Password</label><br>
+        <input type="pswd1" name="pswd1" id="pswd1" ><br><br>
+        <label for="pswd2">Confirm Password</label><br>
+        <input type="pswd2" name="pswd2" id="pswd2" ><br><br>
+        <button name="signup" id="signup" type="submit">Submit</button>
+    </form>
 
-    </div>
-</body>
-</html>
+</div>
+<%- include('./frame/footer')%>
