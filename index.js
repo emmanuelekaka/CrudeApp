@@ -3,11 +3,15 @@
 const express = require ('express');
 const app = express();
 const mongoose = require ('mongoose')
+const Post = require('./models/posts')
 
 // conection to mongodb
 const uri = 'mongodb://localhost:27017/crude';
+
+// Testing for connection
 if(mongoose.connect(uri,{useNewUrlParser:true, useUnifiedTopology:true})){
     console.log("db connection success");
+    app.listen(3000);
 
 };
 
@@ -44,6 +48,23 @@ app.get('/',(req,res)=>{
     ]
     res.render('index',{title:'Home Page', blogs});
 })
+app.get('/add-post',async(req,res)=>{
+    const post = new Post({
+        title:"Home coming",
+        body:"By spider man"
+    });
+    try{
+        await post.save();
+        res.send(post);
+
+    }catch{
+        (err)=>{
+            console.log(err);
+        }
+    }
+    
+   
+});
 app.get('/about',(req,res)=>{
     res.render('about',{title:'About Page'});
 })
@@ -66,5 +87,6 @@ app.use((req, res)=>{
 })
 
 // Listens to requests from the client (browser)
-app.listen(3000);
+
+
 
