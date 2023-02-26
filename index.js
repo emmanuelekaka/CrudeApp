@@ -39,19 +39,20 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // Dealing with html files and basic routing
-app.get('/',(req,res)=>{
-    const blogs = [
-        {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
-        {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
-        {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
-        {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
-    ]
+app.get('/',async(req,res)=>{
+    // const blogs = [
+    //     {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
+    //     {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
+    //     {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
+    //     {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
+    // ]
+    const blogs = await Post.find();
     res.render('index',{title:'Home Page', blogs});
 })
 app.get('/add-post',async(req,res)=>{
     const post = new Post({
-        title:"Home coming",
-        body:"By spider man"
+        title:"Abra Cadabra",
+        body:"Magical book on how to use the magic wand"
     });
     try{
         await post.save();
@@ -65,6 +66,11 @@ app.get('/add-post',async(req,res)=>{
     
    
 });
+app.get('/getposts',async(req,res)=>{
+    const items = await Post.find();
+    res.send(items);    
+    
+})
 app.get('/about',(req,res)=>{
     res.render('about',{title:'About Page'});
 })
