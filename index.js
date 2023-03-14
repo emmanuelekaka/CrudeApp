@@ -37,6 +37,8 @@ app.set('view engine', 'ejs');
 
 // Middle ware and static files.
 app.use(express.static('public'));
+// Parsing data through urls to the database
+app.use(express.urlencoded({extended:true}));
 
 // Dealing with html files and basic routing
 app.get('/',async(req,res)=>{
@@ -46,9 +48,11 @@ app.get('/',async(req,res)=>{
     //     {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
     //     {title:'Power of the mind', body:'Where your mind can lead you when you use it right'},
     // ]
-    const blogs = await Post.find();
+    const blogs = await Post.find().sort({createdAt:-1});
     res.render('index',{title:'Home Page', blogs});
 })
+
+// adding post manually
 app.get('/add-post',async(req,res)=>{
     const post = new Post({
         title:"Abra Cadabra",
@@ -67,10 +71,16 @@ app.get('/add-post',async(req,res)=>{
    
 });
 app.get('/getposts',async(req,res)=>{
-    const items = await Post.find();
+    const items = await Post.find().sort({createdAt:-1});
     res.send(items);    
     
 })
+
+// app.post('/addpost',async(req,res)=>{
+//     const items = await Post.findById()
+//     res.send(items);    
+    
+// })
 app.get('/about',(req,res)=>{
     res.render('about',{title:'About Page'});
 })
@@ -82,6 +92,29 @@ app.get('/register',(req,res)=>{
 })
 app.get('/create',(req,res)=>{
     res.render('create',{title:'Create Blog Page'});
+})
+// posting data to the server
+app.post('/create',async (req,res)=>{
+    const postcreate = new Post(req.body);
+    try{
+        await postcreate.save();
+        res.redirect('/');
+
+    }catch{
+        (err)=>{
+            console.log(err);
+        }
+    }
+    
+    
+})
+// getting single post
+app.get('/:id',async(req,res)=>{
+    // same name with what was passed in the request
+    const id = req.params.id
+    const item = await Post.findById(id)
+    res.render('single',{title:'Single item',item}); 
+    
 })
 // redirects in express
 // app.get('/about-me',(req,res)=>{

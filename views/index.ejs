@@ -8,7 +8,8 @@
             <%blogs.forEach(blog=>{%>
                 <div class="post-body" style="border: 2px solid white; margin:3px;padding:3px;">
                     <h3><%=blog.title%></h3>
-                    <p><%=blog.body%></p>   
+                    <p><%=blog.body%></p> 
+                    <a href="/<%=blog._id%>">more</a>  
                 </div>
                                     
             <%})%>

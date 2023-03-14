@@ -4,12 +4,13 @@
 <h1>Create Blog Post</h1>
 <!-- Form where the blog is created from -->
 <div>
-    <form action="">
+    <form action="/create" method="POST">
+        <!-- Ensure same naming convention for names in database and what is used here -->
         <label for="heading">Heading</label><br>
-        <textarea name="heading" id="heading" cols="30" rows="3"></textarea><br><br>
+        <textarea name="title" id="heading" cols="30" rows="3" required></textarea><br><br>
         
         <label for="message">Message</label><br>
-        <textarea name="message" id="message" cols="30" rows="8"></textarea><br><br>
+        <textarea name="body" id="message" cols="30" rows="8" required></textarea><br><br>
         <button>Submit</button>
     </form>
 
